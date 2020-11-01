@@ -1,0 +1,16 @@
+http://localhost:8080/estoquews?wsdl
+
+------------------------------------
+Cliente
+
+SoapUI
+
+1) Ao iniciar o SoapUI crie um New SOAP Project.
+
+2) No diálogo coloque a URL do WSDL no campo Initial WSDL: http://localhost:8080/estoquews?wsdl
+
+3) Confirme. Automaticamente é gerado um cliente que sabe enviar uma requisição SOAP.
+
+4) Abra o elemento Request 1 abaixo do elemento todosItens.
+
+5) Execute a requisição SOAP!
