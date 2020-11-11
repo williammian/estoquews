@@ -41,7 +41,7 @@ public class EstoqueWS {
 		boolean valido = new TokenDao().ehValido(token);
 
 		if(!valido) {
-			throw new AutorizacaoException("Token invalido");
+			throw new AutorizacaoException("Autorizacao falhou");
 		} 
 		
 		this.dao.cadastrar(item);
