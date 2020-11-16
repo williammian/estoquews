@@ -1,0 +1,11 @@
+TORNANDO UM .JAR EM SERVIÇO NO WINDOWS
+
+https://armandocouto.com.br/java-tornando-um-jar-em-servico-no-windows/
+
+Baixar o nssm-2.24
+
+entrar na pasta onde esté o executável ...\nssm-2.24\win64\nssm.exe
+
+executar
+
+nssm install SeuServico java -jar C:\caminho\projeto.jar
