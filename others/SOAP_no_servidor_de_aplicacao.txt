@@ -1,0 +1,41 @@
+Usando SOAP no servidor de aplicação
+
+Instalar o WildFly no SO
+
+criar um novo projeto do tipo Dynamic Web Project. Chame o projeto estoque-web
+
+Associe o projeto com o WildFly
+
+Colocar o WSDL (EstoqueWSServiceCap5.wsdl) na pasta src do projeto estoque-web
+
+Entrando na pasta wildfly-8.2.1.Final/bin
+executar
+wsconsume.bat -k -n -o C:\workspace\estoque-web\src C:\workspace\estoque-web\src\EstoqueWSServiceCap5.wsdl
+
+Criar a classe EstoqueWSImpl
+
+@WebService(endpointInterface="br.com.caelum.estoque.ws.EstoqueWS", 
+serviceName="EstoqueWS", 
+portName="EstoqueWSPort")
+public class EstoqueWSImpl implements EstoqueWS {
+	
+    @Override
+    public ListaItens todosOsItens(Filtros filtros) {
+        System.out.println("Chamando todos os Itens");
+        return new ListaItens();
+    }
+
+    @Override
+    public CadastrarItemResponse cadastrarItem(CadastrarItem parameters, TokenUsuario tokenUsuario) throws AutorizacaoFault {
+        System.out.println("Chamando cadastarItem");
+        return new CadastrarItemResponse();
+    }
+
+}
+
+
+rodar o jboss com o projeto
+
+acessar: http://localhost:8080/estoque-web/EstoqueWS?wsdl
+
+ver WSDL publicado
