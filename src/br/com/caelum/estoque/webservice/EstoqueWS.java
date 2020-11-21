@@ -22,8 +22,8 @@ import br.com.caelum.estoque.modelo.usuario.TokenUsuario;
 
 @WebService
 //@SOAPBinding(style=Style.RPC)
-@SOAPBinding(style=Style.DOCUMENT,parameterStyle=ParameterStyle.BARE) // -> quando queremos entregar apenas o item sem ter conhecimento de qual método/procedimento é chamado no lado do servidor
-//@SOAPBinding(style=Style.DOCUMENT,parameterStyle=ParameterStyle.WRAPPED) // -> este é o padrão e não precisa ser explícito
+//@SOAPBinding(style=Style.DOCUMENT,parameterStyle=ParameterStyle.BARE) // -> quando queremos entregar apenas o item sem ter conhecimento de qual método/procedimento é chamado no lado do servidor
+@SOAPBinding(style=Style.DOCUMENT,parameterStyle=ParameterStyle.WRAPPED) // -> este é o padrão e não precisa ser explícito
 public class EstoqueWS {
 	
 	private ItemDao dao = new ItemDao();

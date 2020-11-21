@@ -1,0 +1,60 @@
+Rodar o serviço PublicaEstoqueWS.
+Acessar o WSDL no navegador
+http://localhost:8080/estoquews?wsdl
+No navegador deve aparecer o WSDL
+
+Crie um novo projeto java chamado de estoque-cliente-soap
+
+Abra um terminal entre no diretório workspace/estoque-cliente-soap
+digitar
+wsimport -s src -p br.com.caelum.estoque.cliente http://localhost:8080/estoquews?wsdl
+
+No projeto estoque-cliente-soap
+Crie uma nova classe TesteClienteSoap dentro do pacote br.com.caelum.estoque.cliente.teste
+
+public class TesteClienteSoap {
+	
+	public static void main(String[] args) {
+		EstoqueWS cliente = new EstoqueWSService().getEstoqueWSPort();
+		System.out.println(cliente);
+
+		Filtro filtro = new Filtro();
+		filtro.setNome("IPhone");
+		filtro.setTipo(TipoItem.CELULAR);;
+
+		Filtros filtros = new Filtros();
+		filtros.getFiltro().add(filtro);
+
+		ListaItens lista = cliente.todosOsItens(filtros);
+
+		System.out.println("Resposta do serviço: " + lista);
+	}
+}
+
+Criar outra classe chamada ClienteEstoque
+
+public class ClienteEstoque {
+	
+	public static void main(String[] args) throws Exception {
+
+        URL url = new URL("http://localhost:8080/estoquews?wsdl");
+        QName qname = new QName("http://webservice.estoque.caelum.com.br/", "EstoqueWSService");
+
+        Service service = Service.create(url, qname);
+
+        EstoqueWS cliente = service.getPort(EstoqueWS.class);
+
+        Filtro filtro = new Filtro();
+        filtro.setNome("IPhone");
+        filtro.setTipo(TipoItem.CELULAR);
+        
+        Filtros filtros = new Filtros();
+        filtros.getFiltro().add(filtro);
+
+        ListaItens lista = cliente.todosOsItens(filtros);
+
+        for (Item item : lista.getItem()) {
+            System.out.println(item.getNome());
+        }
+    }
+}
