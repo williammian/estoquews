@@ -9,3 +9,9 @@ entrar na pasta onde esté o executável ...\nssm-2.24\win64\nssm.exe
 executar
 
 nssm install SeuServico java -jar C:\caminho\projeto.jar
+
+---------------------------------------
+
+Outro modo
+
+https://www.codeflow.site/pt/article/spring-boot-app-as-a-service
